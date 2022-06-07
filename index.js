@@ -55,6 +55,10 @@ const ramdom = async (req, res) => {
 app.get('/productos', objetos)
 app.get('/productoRandom', ramdom )
 
-app.listen (puerto, () => {
-    console.log(`Servidor escuchando en el puerto ${puerto}`)
+app.listen(puerto, (err) => {
+    if(err) {
+        console.log(`Se produjo un error al iniciar el servidor ${err}`)
+    } else {
+        console.log(`El servidor esta escuchando el puerto: ${puerto}`)
+    }
 })
