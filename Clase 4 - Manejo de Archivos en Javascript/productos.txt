@@ -1,0 +1,1 @@
+[{"nombre":"Garbanzos","precio":203,"thumbnail":"https://d3ugyf2ht6aenh.cloudfront.net/stores/001/040/363/products/garbanzos-31-fc5e033f03cb53716615981405601498-640-0.jpg","id":1},{"nombre":"Cebada","precio":230,"thumbnail":"https://d3ugyf2ht6aenh.cloudfront.net/stores/001/040/363/products/hisopos-caja11-9f2cf0d7c57f398f8416333590847488-640-0.jpg","id":2}]
