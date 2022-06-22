@@ -1,0 +1,26 @@
+extends ./layouts/main.pug
+
+block content
+  a(type="button" href="/" class="btn btn-dark btn-lg mt-5") Agregar nuevo producto
+
+  if dataProducts.length 
+    table(class="table table-dark table-striped mt-5")
+      thead
+        tr
+          th(scope="col") Nombre
+          th(scope="col") Precio
+          th(scope="col") Imagen
+      tbody
+        each product in dataProducts
+          tr
+            th(scope="row")= product.title
+            td= product.price
+            td 
+              img(height="50px" width="80px")&attributes({src: product.thumbnail, alt: product.title})
+  else
+    div(class="row justify-content-center mt-5")
+      div(class="col-md-5")
+        div(class="card")
+          div(class="card-body")
+            h2(class="display-5 text-center") Lista vacia
+            p(style="display: inline;") Aún no hay productos registrados
