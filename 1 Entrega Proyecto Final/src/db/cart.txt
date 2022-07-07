@@ -1,0 +1,28 @@
+[
+  {
+    "cartId": 1,
+    "timestamp": "6/7/2022 20:59:09",
+    "products": [
+      {
+        "name": "ID5",
+        "price": "2342342",
+        "photoURL": "sfdgggggggggggggggggggggggg",
+        "id": 1,
+        "stock": "999",
+        "description": "prueba",
+        "code": "b-1",
+        "timestamp": "6/7/2022 16:22:07"
+      },
+      {
+        "name": "PruebaAdmin",
+        "price": "666",
+        "photoURL": "CCCCCCCCC",
+        "stock": "33333333333",
+        "description": "admin",
+        "code": "J-3",
+        "id": 3,
+        "timestamp": "6/7/2022 20:19:13"
+      }
+    ]
+  }
+]
