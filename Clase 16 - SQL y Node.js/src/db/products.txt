@@ -1,0 +1,32 @@
+[
+  {
+    "name": "Prueba Cart 1",
+    "price": "12",
+    "photoURL": "AAAAAAAAAAA",
+    "stock": "234",
+    "description": "prueba",
+    "code": "b-3",
+    "id": 2,
+    "timestamp": "6/7/2022 17:41:42"
+  },
+  {
+    "name": "PruebaAdmin",
+    "price": "666",
+    "photoURL": "CCCCCCCCC",
+    "stock": "33333333333",
+    "description": "admin",
+    "code": "J-3",
+    "id": 3,
+    "timestamp": "6/7/2022 20:19:13"
+  },
+  {
+    "name": "PruebaAdmin",
+    "price": "000",
+    "photoURL": "CCCCCCCCC",
+    "stock": "33333333333",
+    "description": "admin",
+    "code": "J-3",
+    "id": 4,
+    "timestamp": "6/7/2022 21:59:03"
+  }
+]
