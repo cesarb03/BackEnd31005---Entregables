@@ -1,9 +1,9 @@
 export interface product {
-    code: string
-    description: string
+    // code: string
+    // description: string
     name: string
     price: number
     photoURL: string
-    stock: number
+    // stock: number
   }
   

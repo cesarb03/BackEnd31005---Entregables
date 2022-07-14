@@ -1,6 +1,6 @@
-import { message } from '../interfaces/mesagge'
+import { message } from '../interfaces/message'
 import { newMessage } from '../interfaces/newMessage'
-import { connectionSQL } from '../db/db'
+import { configSQLite3 } from '../db/db'
 import { Knex } from 'knex'
 
 
@@ -42,4 +42,4 @@ class Chat {
   }
 }
 
-export default new Chat(connectionSQL, 'chat')
+export default new Chat(configSQLite3, 'chat')
