@@ -34,7 +34,7 @@ class ChatContainer extends FileSystemContainer {
           const messageListNormalized = normalizeAndDenormalize('normalize', messagesArray)
           console.log("Normalized")
           print(messageListNormalized)
-          await fs.promises.writeFile(this.filePath, JSON.stringify(messageListNormalized))
+          await fs.promises.writeFile(this.filePath, JSON.stringify(messageListNormalized, null, 2))
 
       } catch (err) {
           console.log("File cannot be written " + err)

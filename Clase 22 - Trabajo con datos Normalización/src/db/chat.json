@@ -1,0 +1,31 @@
+{
+  "entities": {
+    "author": {
+      "juan@outlook.com": {
+        "email": "juan@outlook.com",
+        "name": "Juan",
+        "lastname": "Perez",
+        "age": "22",
+        "alias": "Jhon",
+        "avatar": "https://st.depositphotos.com/1000423/2111/i/450/depositphotos_21112811-stock-photo-football-player-striking-the-ball.jpg"
+      }
+    },
+    "message": {
+      "1": {
+        "author": "juan@outlook.com",
+        "text": "hola",
+        "time": "9/8/2022",
+        "id": 1
+      }
+    },
+    "messages": {
+      "messages": {
+        "id": "messages",
+        "messages": [
+          1
+        ]
+      }
+    }
+  },
+  "result": "messages"
+}
