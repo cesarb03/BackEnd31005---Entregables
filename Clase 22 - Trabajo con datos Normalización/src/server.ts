@@ -58,6 +58,9 @@ io.on('connection', async (socket) => {
         const lengthDenormalized = JSON.stringify(denormalizedMessages).length;
         let compressionRate = Math.round((lengthNormalized*100) / lengthDenormalized)
         console.log(`Compression Rate: ${(100 - compressionRate).toFixed(2)}%`)
+        console.log(`Length Normalized: ${lengthNormalized}`)
+        console.log(`Length Denormalized: ${lengthDenormalized}`)
+        
         io.emit('server:message', messages)
     })
 })
