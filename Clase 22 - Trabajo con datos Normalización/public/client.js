@@ -9,6 +9,12 @@ const formMessage = document.querySelector("#formMessage");
 const userEmailInput = document.querySelector("#userEmailInput");
 const messageInput = document.querySelector("#messageInput");
 const messagesPool = document.querySelector("#messagesPool");
+const userNameInput = document.querySelector('#userName')
+const userLastnameInput = document.querySelector('#userLastname')
+const userAgeInput = document.querySelector('#userAge')
+const userAliasInput = document.querySelector('#userAlias')
+const userAvatarInput = document.querySelector('#userAvatar')
+
 
 function sendProduct() {
   try {
@@ -35,9 +41,20 @@ async function renderProducts(products) {
 
 const sendMessage = () => {
   try {
-    const email = userEmailInput.value;
-    const message = messageInput.value;
-    socket.emit("client:message", { email, message });
+    let time = new Date().toLocaleDateString('es-AR')
+        const message = {
+            author: {
+              email: userEmailInput.value,
+              name: userNameInput.value,
+              lastname: userLastnameInput.value,
+              age: userAgeInput.value,
+              alias: userAliasInput.value,
+              avatar: userAvatarInput.value,
+            },
+            text: messageInput.value,
+            time: time
+          }
+    socket.emit("client:message", message );
   } catch (error) {
     console.log(`Han error has ocurred; ${error}`);
   }
@@ -45,27 +62,26 @@ const sendMessage = () => {
 
 const renderMessages = async (messages) => {
   try {
-    const template = await fetch('chat.hbs')
+        const template = await fetch('chat.hbs')
         const hbsTemplateCompiled = Handlebars.compile(await template.text())
         messagesPool.innerHTML = hbsTemplateCompiled({messages})
-      } 
-      catch (error) {
-      console.log(`Hubo un error ${error}`);
+      } catch (error) {
+          console.log(`Hubo un error ${error}`);
   }
 };
 
 productForm.addEventListener("submit", (event) => {
-  event.preventDefault();
-  sendProduct();
-  titleInput.value = "";
-  priceInput.value = "";
-  thumbnailInput.value = "";
+  event.preventDefault()
+  sendProduct()
+  titleInput.value = ""
+  priceInput.value = ""
+  thumbnailInput.value = ""
 });
 
-formMessage.addEventListener("submit", (event) => {
-  event.preventDefault();
-  sendMessage();
-  messageInput.value = "";
+formMessage.addEventListener("submit", event => {
+  event.preventDefault()
+  sendMessage()
+  messageInput.value = ""
 });
 
 socket.on("server:product", products => {renderProducts(products)});

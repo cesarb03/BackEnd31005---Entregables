@@ -12,3 +12,4 @@ export const getFakerProducts = async (req: Request, res: Response) => {
         console.log(`Han error has ocurred; ${err}`)
     }
 }
+

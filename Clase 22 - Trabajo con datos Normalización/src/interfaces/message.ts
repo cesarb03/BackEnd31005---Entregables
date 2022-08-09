@@ -1,6 +1,7 @@
 import { newMessage } from './newMessage'
 
 export interface message extends newMessage {
-  time: string
-  dateString: string
-}
+    id: number
+    time: string
+    dateString: string
+  }

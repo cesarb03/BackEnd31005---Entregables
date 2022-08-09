@@ -26,20 +26,3 @@ class FakerProductsContainer {
 }
 
 export default FakerProductsContainer
-
-// export const productsTest = async (req: Request, res: Response) => {
-//     const products: product[] = []
-//     const cantidad = req.query.cant || 5
-//     let id = 1
-//       for (let i = 1; i <= cantidad; i++) {
-//         const prod: product = {
-//           id: id++,
-//           name: faker.commerce.product(),
-//           price: Number(faker.commerce.price()),
-//           photoURL: faker.image.abstract()
-//         };
-//         products.push(prod);
-//       }
-    //   res.json({
-    //     products
-    // })

@@ -1,16 +1,14 @@
 import express from 'express'
 import routes from './routes/routes'
 import auth from './middlewares/auth'
-import wrongRoute from './middlewares/wrongRoute'
 import { Server as IOServer } from 'socket.io'
 import path from "path";
-import { fileURLToPath } from "url";
-// const __dirname = path.dirname(fileURLToPath(import.meta.url));
 import dotenv from 'dotenv'
 dotenv.config()
 import products from './container/dbProductsContainer';
 import chat from './container/chatContainer'
-import { engine } from "express-handlebars";
+import normalizeAndDenormalize from './utils/normalizr'
+
 const port = process.env.PORT
 const app = express()
 
@@ -34,11 +32,15 @@ app.use(express.static(path.join(__dirname, '../public')))
 
 const io = new IOServer(serverExpress)
 
+let messages: any[] = []
+
 
 io.on('connection', async (socket) => {
+
     console.log(`Se conectó un usuario: ${socket.id}`);
     socket.emit('server:product', await products.getAll())
-    socket.emit('server:message', await chat.getAllMessages())
+    socket.emit('server:message', messages )
+
 
     socket.on('client:product', async (productInfo) => {
         products.addProduct(productInfo)
@@ -46,7 +48,16 @@ io.on('connection', async (socket) => {
     })
 
     socket.on('client:message', async (messageInfo) => {
-        chat.addMessage(messageInfo)
-        io.emit('server:message', await chat.getAllMessages())
+        messageInfo.id = messages.length+1
+        messages.push(messageInfo)
+        chat.writeChatToFile(messages)
+        //compression rate
+        const denormalizedMessages = messages
+        const normalizedMessages = normalizeAndDenormalize('normalize', messages)
+        const lengthNormalized = JSON.stringify(normalizedMessages).length;
+        const lengthDenormalized = JSON.stringify(denormalizedMessages).length;
+        let compressionRate = Math.round((lengthNormalized*100) / lengthDenormalized)
+        console.log(`Compression Rate: ${(100 - compressionRate).toFixed(2)}%`)
+        io.emit('server:message', messages)
     })
 })

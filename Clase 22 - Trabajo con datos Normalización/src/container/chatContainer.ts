@@ -1,44 +1,46 @@
-import { message } from '../interfaces/message'
-import { newMessage } from '../interfaces/newMessage'
-import { Knex } from 'knex'
-import { configSQLite3 } from '../db/db'
+import fs from 'fs'
+import FileSystemContainer from './fsContainer'
+import normalizeAndDenormalize from "../utils/normalizr"
+import util from "util";
 
-class Chat {
-  private db: Knex
-  private table: string
-
-  constructor(options: any, table: string) {
-    this.db = require('knex')(options)
-    this.table = table
-    this.createTableIfNotExists()
-  }
-
-  private async createTableIfNotExists(): Promise<void> {
-    if (!(await this.db.schema.hasTable(this.table))) {
-      try {
-        await this.db.schema.createTableIfNotExists(this.table, (table) => {
-          table.increments('id').primary()
-          table.string('email')
-          table.string('message')
-          table.string('date')
-        })
-      } catch (error) {
-        console.error(error)
-      }
-    }
-  }
-
-  public addMessage = async ({ email, message }: newMessage): Promise<void> => {
-    const date = new Date().toLocaleString("es-AR")
-
-    await this.db.insert({ email, message, date }).into(this.table)
-  }
-
-  public async getAllMessages(): Promise<message[]> {
-    const messages: message[] = await this.db.select('*').from(this.table)
-
-    return messages
-  }
+function print(objeto: any) {
+  console.log(util.inspect(objeto, false, 12, true));
 }
 
-export default new Chat(configSQLite3, 'chat')
+
+class ChatContainer extends FileSystemContainer {
+  constructor(){
+      super('./src/db/chat.json')
+  }
+
+  public async readChatFromFile() {
+      try {
+          const messages: any = await fs.promises.readFile(this.filePath, 'utf8')
+          const messageList = JSON.parse(messages)
+          
+          const messageListDenormalized = normalizeAndDenormalize('denormalize', messageList)
+          console.log("Denormalized")
+          print(messageListDenormalized)
+          return messageListDenormalized
+  
+      } catch (err) {
+          console.log("File cannot be read " + err)
+      }
+  }
+
+  public async writeChatToFile(messagesArray: any) {
+      
+      try {
+          const messageListNormalized = normalizeAndDenormalize('normalize', messagesArray)
+          console.log("Normalized")
+          print(messageListNormalized)
+          await fs.promises.writeFile(this.filePath, JSON.stringify(messageListNormalized))
+
+      } catch (err) {
+          console.log("File cannot be written " + err)
+      }
+  }
+
+}
+
+export default new ChatContainer

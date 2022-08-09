@@ -1,4 +1,11 @@
 export interface newMessage {
+  author: {
     email: string
-    message: string
+    name: string
+    lastname: string
+    age: number
+    alias: string
+    avatar: string
   }
+  text: string
+}
