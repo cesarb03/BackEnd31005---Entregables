@@ -16,6 +16,8 @@ import sessionRegister from "./routes/session/register"
 import User from './models/schema/user'
 import mongoose from "mongoose";
 import flash from "connect-flash";
+import config from './db/db'
+
 
 declare module 'express-session' {
   export interface SessionData {
@@ -45,7 +47,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // CONFIGURACION MOTOR DE PLANTILLAS EJS
-app.set("views", path.join(__dirname, "../src/views"));
+app.set("views", path.join(__dirname, "../views"));
 app.set("view engine", "ejs");
 
 const mongoOptions: any = { useNewUrlParser: true, useUnifiedTopology: true };
@@ -53,7 +55,7 @@ app.use(
   session({
     store: MongoStore.create({
       mongoUrl:
-        "mongodb+srv://cesarb03:q1w2e3@project-backend.lwnru.mongodb.net/?retryWrites=true&w=majority",
+        config.mongoDB.URI,
       mongoOptions,
     }),
     secret: "coderhouse",
@@ -67,8 +69,8 @@ app.use(
 );
 
 mongoose.connect(
-  "mongodb+srv://cesarb03:q1w2e3@project-backend.lwnru.mongodb.net/?retryWrites=true&w=majority",
-  mongoOptions,
+  config.mongoDB.URI,
+    mongoOptions,
   (err) => {
     try {
       console.log("Connected to MongoDB Atlas");
@@ -92,19 +94,8 @@ passport.deserializeUser(async (id, done) => {
   done(null, user);
 });
 
-//Login session Middleware
-function checkUserSessionnn(req: any, res: any, next: any) {
-  if (req.session?.user) {
-    console.log("Acá llego, SI existe sesion");
-    next();
-  } else {
-    console.log("Acá llego, NO existe sesion");
-    res.redirect("/login");
-  }
-}
 
 //RUTAS
-
 app.use("/login", sessionLogin);
 app.use("/logout", sessionLogout);
 app.use("/register", sessionRegister);
