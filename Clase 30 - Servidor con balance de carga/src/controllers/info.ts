@@ -1,7 +1,11 @@
 import { Request, Response } from 'express';
+import os from 'os'
+
 
 const renderInfo = (req: Request, res: Response) => {
   // const { name, email } = req.user as any;
+  const cpuQty: Number = os.cpus().length
+
 
   return res.render('info', {
     title: process.argv,
@@ -12,6 +16,7 @@ const renderInfo = (req: Request, res: Response) => {
     path: process.execPath,
     id: process.pid,
     folder: process.cwd(),
+    processNumber: cpuQty,
     // name,
     // email,
   })

@@ -1,11 +1,11 @@
 import express from "express";
 import auth from './middlewares/auth'
-import { Server as IOServer } from "socket.io";
+// import { Server as IOServer } from "socket.io";
 import path from "path";
 import dotenv from "dotenv";
-import products from "./container/dbProductsContainer";
-import chat from "./container/chatContainer";
-import normalizeAndDenormalize from "./utils/normalizr";
+// import products from "./container/dbProductsContainer";
+// import chat from "./container/chatContainer";
+// import normalizeAndDenormalize from "./utils/normalizr";
 import cookieParser from "cookie-parser";
 import session from "express-session";
 import passport from "passport";
@@ -18,11 +18,12 @@ import flash from "connect-flash";
 import MongoStore from "connect-mongo";
 import mongoose from "mongoose";
 import config from './db/dbConfig'
-import  {serverConfig , args} from "./db/serverConfig"
+import  { serverConfig, args } from "./db/serverConfig"
 //Desafio Clase 28
 import randomRouter from "./routes/randoms"
 import info from "./routes/info"
-
+import cluster from 'cluster';
+import os from 'os';
 
 declare module 'express-session' {
   export interface SessionData {
@@ -39,12 +40,31 @@ const port = args.p || process.env.PORT || serverConfig.PORT || 8080
 
 //SERVER
 const app = express();
-const serverExpress = app.listen(port, () => {
-  console.log(`Server listening on port: ${port}`);
-  console.log(`Server modo: ${args.m}`);
-});
+const cpus = os.cpus();
 
-const io = new IOServer(serverExpress);
+// const serverExpress = app.listen(port, () => {
+//   console.log(`Server listening on port: ${port}`);
+// });
+
+if ( process.argv[3] === "cluster" && cluster.isPrimary ) {
+  cpus.map(() => {
+    cluster.fork();
+  });
+  cluster.on('exit', (worker: any) => {
+    console.log(`Worker ${worker.process.pid} died`)
+    cluster.fork();
+  });
+} else {
+
+  app.get("/api/randoms", (req, res) => {
+    res.send(`Server: ${port}`);
+  });
+    app.listen(port, () => {
+      console.log(`Server listening on port: ${port}`);
+  });
+}
+
+// const io = new IOServer(serverExpress);
 
 //MIDDLEWARES
 app.use(express.static(path.join(__dirname, "../public")));
@@ -114,34 +134,34 @@ app.use("/info", info)
 app.use("/randoms", randomRouter)
 
 //SOCKET
-let messages: any[] = [];
+// let messages: any[] = [];
 
-io.on("connection", async (socket) => {
-  console.log(`Se conectó un usuario: ${socket.id}`);
-  socket.emit("server:product", await products.getAll());
-  socket.emit("server:message", messages);
+// io.on("connection", async (socket) => {
+//   console.log(`Se conectó un usuario: ${socket.id}`);
+//   socket.emit("server:product", await products.getAll());
+//   socket.emit("server:message", messages);
 
-  socket.on("client:product", async (productInfo) => {
-    products.addProduct(productInfo);
-    io.emit("server:product", await products.getAll());
-  });
+//   socket.on("client:product", async (productInfo) => {
+//     products.addProduct(productInfo);
+//     io.emit("server:product", await products.getAll());
+//   });
 
-  socket.on("client:message", async (messageInfo) => {
-    messageInfo.id = messages.length + 1;
-    messages.push(messageInfo);
-    chat.writeChatToFile(messages);
-    //compression rate
-    const denormalizedMessages = messages;
-    const normalizedMessages = normalizeAndDenormalize("normalize", messages);
-    const lengthNormalized = JSON.stringify(normalizedMessages).length;
-    const lengthDenormalized = JSON.stringify(denormalizedMessages).length;
-    let compressionRate = Math.round(
-      (lengthNormalized * 100) / lengthDenormalized
-    );
-    console.log(`Compression Rate: ${(100 - compressionRate).toFixed(2)}%`);
-    console.log(`Length Normalized: ${lengthNormalized}`);
-    console.log(`Length Denormalized: ${lengthDenormalized}`);
+//   socket.on("client:message", async (messageInfo) => {
+//     messageInfo.id = messages.length + 1;
+//     messages.push(messageInfo);
+//     chat.writeChatToFile(messages);
+//     //compression rate
+//     const denormalizedMessages = messages;
+//     const normalizedMessages = normalizeAndDenormalize("normalize", messages);
+//     const lengthNormalized = JSON.stringify(normalizedMessages).length;
+//     const lengthDenormalized = JSON.stringify(denormalizedMessages).length;
+//     let compressionRate = Math.round(
+//       (lengthNormalized * 100) / lengthDenormalized
+//     );
+//     console.log(`Compression Rate: ${(100 - compressionRate).toFixed(2)}%`);
+//     console.log(`Length Normalized: ${lengthNormalized}`);
+//     console.log(`Length Denormalized: ${lengthDenormalized}`);
 
-    io.emit("server:message", messages);
-  });
-});
+//     io.emit("server:message", messages);
+//   });
+// });

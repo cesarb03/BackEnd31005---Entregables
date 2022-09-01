@@ -1,0 +1,43 @@
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+------------INSTANCIAS PM2----------------------
+
+pm2 start dist/server.js --watch -i max --name="Server1" -- -- -p 8082 (no me toma el parametro cluster, por eso lo creo asi)
+
+pm2 start dist/server.js --watch --name="Server2" -- -- -p 8082 -m fork  
+
+forever start dist/server.js
+
+forever stop <pid>
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+1 - CLUSTER DE SERVIDORES (Ruta --> api/randoms)
+pm2 start dist/server.js --watch -i max --name="Server1" -- -- -p 8082
+pm2 start dist/server.js --watch -i max --name="Server2" -- -- -p 8083
+pm2 start dist/server.js --watch -i max --name="Server3" -- -- -p 8084
+pm2 start dist/server.js --watch -i max --name="Server4" -- -- -p 8085
+
+2 - SERVIDOR FORK (Ruta --> /)
+pm2 start dist/server.js --watch --name="Server" -- -- -p 8081 -m fork  
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+-------------- MODO CLUSTER -------------------
+Comandos usados:
+
+//pm2 list
+//pm2 delete id/name
+//pm2 monit
+//pm2 --help
+//pm2 logs
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+----------CONFIGURACION DE NGINX----------------
+
+Archivo con la config. en el repo "nginx.conf"
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+SE AGREGÓ EN /info LA MUESTRA DE CANT. DE PROCESADORES
