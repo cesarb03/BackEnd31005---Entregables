@@ -1,0 +1,247 @@
+Statistical profiling result from WithOutCLog_v8.log, (807 ticks, 0 unaccounted, 0 excluded).
+
+ [Shared libraries]:
+   ticks  total  nonlib   name
+    677   83.9%          C:\WINDOWS\SYSTEM32\ntdll.dll
+    127   15.7%          C:\Program Files\nodejs\node.exe
+
+ [JavaScript]:
+   ticks  total  nonlib   name
+      1    0.1%   33.3%  LazyCompile: *resolve node:path:158:10
+      1    0.1%   33.3%  LazyCompile: *Module._findPath node:internal/modules/cjs/loader:494:28
+      1    0.1%   33.3%  Function: ^Module._resolveLookupPaths node:internal/modules/cjs/loader:667:38
+
+ [C++]:
+   ticks  total  nonlib   name
+
+ [Summary]:
+   ticks  total  nonlib   name
+      3    0.4%  100.0%  JavaScript
+      0    0.0%    0.0%  C++
+      8    1.0%  266.7%  GC
+    804   99.6%          Shared libraries
+
+ [C++ entry points]:
+   ticks    cpp   total   name
+
+ [Bottom up (heavy) profile]:
+  Note: percentage shows a share of a particular caller in the total
+  amount of its parent calls.
+  Callers occupying less than 1.0% are not shown.
+
+   ticks parent  name
+    677   83.9%  C:\WINDOWS\SYSTEM32\ntdll.dll
+      8    1.2%    C:\Program Files\nodejs\node.exe
+      2   25.0%      C:\Program Files\nodejs\node.exe
+      1   50.0%        Function: ^readPackage node:internal/modules/cjs/loader:290:21
+      1  100.0%          Function: ^readPackageScope node:internal/modules/cjs/loader:321:26
+      1  100.0%            Function: ^Module._extensions..js node:internal/modules/cjs/loader:1114:37
+      1   50.0%        Function: ^getOwn node:internal/bootstrap/loaders:180:16
+      1  100.0%          Function: ^syncExports node:internal/bootstrap/loaders:287:14
+      1  100.0%            Function: ^<anonymous> node:internal/bootstrap/loaders:273:15
+      1   12.5%      LazyCompile: ~resolve node:url:671:41
+      1  100.0%        LazyCompile: ~urlResolve node:url:667:20
+      1  100.0%          LazyCompile: ~module.exports.evaluate C:\Users\Cesar\Downloads\BackEnd Dev\Clase 32\Clase 32 - Loggers, gzip y análisis de performance\node_modules\@mapbox\node-pre-gyp\lib\util\versioning.js:277:35
+      1  100.0%            LazyCompile: ~exports.find C:\Users\Cesar\Downloads\BackEnd Dev\Clase 32\Clase 32 - Loggers, gzip y análisis de performance\node_modules\@mapbox\node-pre-gyp\lib\pre-binding.js:17:24
+      1   12.5%      LazyCompile: ~processWaitQueue C:\Users\Cesar\Downloads\BackEnd Dev\Clase 32\Clase 32 - Loggers, gzip y análisis de performance\node_modules\mongoose\node_modules\mongodb\lib\cmap\connection_pool.js:406:21
+      1  100.0%        LazyCompile: ~<anonymous> C:\Users\Cesar\Downloads\BackEnd Dev\Clase 32\Clase 32 - Loggers, gzip y análisis de performance\node_modules\mongoose\node_modules\mongodb\lib\cmap\connection_pool.js:168:26
+      1  100.0%          Function: ^processTicksAndRejections node:internal/process/task_queues:68:35
+      1   12.5%      LazyCompile: ~getOptionValue node:internal/options:39:24
+      1  100.0%        LazyCompile: ~setupFetch node:internal/bootstrap/pre_execution:153:20
+      1  100.0%          LazyCompile: ~prepareMainThreadExecution node:internal/bootstrap/pre_execution:28:36
+      1  100.0%            Function: ~<anonymous> node:internal/main/run_main_module:1:1
+      1   12.5%      LazyCompile: ~MongooseServerSelectionError C:\Users\Cesar\Downloads\BackEnd Dev\Clase 32\Clase 32 - Loggers, gzip y análisis de performance\node_modules\mongoose\lib\error\serverSelection.js:26:1
+      1  100.0%        LazyCompile: ~Model.$wrapCallback C:\Users\Cesar\Downloads\BackEnd Dev\Clase 32\Clase 32 - Loggers, gzip y análisis de performance\node_modules\mongoose\lib\model.js:5107:31
+      1  100.0%          LazyCompile: ~<anonymous> C:\Users\Cesar\Downloads\BackEnd Dev\Clase 32\Clase 32 - Loggers, gzip y análisis de performance\node_modules\mongoose\lib\model.js:1432:52
+      1  100.0%            LazyCompile: ~promiseOrCallback C:\Users\Cesar\Downloads\BackEnd Dev\Clase 32\Clase 32 - Loggers, gzip y análisis de performance\node_modules\mongoose\lib\helpers\promiseOrCallback.js:8:44
+      1   12.5%      LazyCompile: ~<anonymous> C:\Users\Cesar\Downloads\BackEnd Dev\Clase 32\Clase 32 - Loggers, gzip y análisis de performance\node_modules\mongodb\lib\mongo_client.js:134:52
+      1  100.0%        LazyCompile: ~maybePromise C:\Users\Cesar\Downloads\BackEnd Dev\Clase 32\Clase 32 - Loggers, gzip y análisis de performance\node_modules\mongodb\lib\utils.js:345:22
+      1  100.0%          LazyCompile: ~connect C:\Users\Cesar\Downloads\BackEnd Dev\Clase 32\Clase 32 - Loggers, gzip y análisis de performance\node_modules\mongodb\lib\mongo_client.js:130:12
+      1  100.0%            LazyCompile: ~connect C:\Users\Cesar\Downloads\BackEnd Dev\Clase 32\Clase 32 - Loggers, gzip y análisis de performance\node_modules\mongodb\lib\mongo_client.js:227:19
+      1   12.5%      Function: ^realpathSync node:fs:2425:22
+      1  100.0%        Function: ^toRealPath node:internal/modules/cjs/loader:393:20
+      1  100.0%          Function: ^tryFile node:internal/modules/cjs/loader:384:17
+      1  100.0%            Function: ^tryExtensions node:internal/modules/cjs/loader:400:23
+
+    127   15.7%  C:\Program Files\nodejs\node.exe
+     93   73.2%    C:\Program Files\nodejs\node.exe
+     39   41.9%      Function: ^compileFunction node:vm:308:25
+     39  100.0%        Function: ^wrapSafe node:internal/modules/cjs/loader:1017:18
+     39  100.0%          Function: ^Module._compile node:internal/modules/cjs/loader:1059:37
+     37   94.9%            Function: ^Module._extensions..js node:internal/modules/cjs/loader:1114:37
+      2    5.1%            LazyCompile: ~Module._extensions..js node:internal/modules/cjs/loader:1114:37
+      6    6.5%      Function: ^stat node:internal/modules/cjs/loader:151:14
+      5   83.3%        Function: ^Module._findPath node:internal/modules/cjs/loader:494:28
+      5  100.0%          Function: ^Module._resolveFilename node:internal/modules/cjs/loader:848:35
+      5  100.0%            Function: ^Module._load node:internal/modules/cjs/loader:757:24
+      1   16.7%        Function: ^tryFile node:internal/modules/cjs/loader:384:17
+      1  100.0%          Function: ^tryExtensions node:internal/modules/cjs/loader:400:23
+      1  100.0%            Function: ^Module._findPath node:internal/modules/cjs/loader:494:28
+      4    4.3%      Function: ^realpathSync node:fs:2425:22
+      4  100.0%        Function: ^toRealPath node:internal/modules/cjs/loader:393:20
+      4  100.0%          Function: ^tryFile node:internal/modules/cjs/loader:384:17
+      3   75.0%            Function: ^tryExtensions node:internal/modules/cjs/loader:400:23
+      1   25.0%            Function: ^tryPackage node:internal/modules/cjs/loader:338:20
+      3    3.2%      Function: ^compileForInternalLoader node:internal/bootstrap/loaders:299:27
+      2   66.7%        Function: ^nativeModuleRequire node:internal/bootstrap/loaders:332:29
+      1   50.0%          Function: ~<anonymous> node:internal/child_process:1:1
+      1  100.0%            Function: ^compileForInternalLoader node:internal/bootstrap/loaders:299:27
+      1   50.0%          Function: ~<anonymous> node:cluster:1:1
+      1  100.0%            Function: ^compileForInternalLoader node:internal/bootstrap/loaders:299:27
+      1   33.3%        LazyCompile: ~compileForPublicLoader node:internal/bootstrap/loaders:246:25
+      1  100.0%          Function: ^loadNativeModule node:internal/modules/cjs/helpers:44:26
+      1  100.0%            Function: ^Module._load node:internal/modules/cjs/loader:757:24
+      2    2.2%      LazyCompile: ~onMessage C:\Users\Cesar\Downloads\BackEnd Dev\Clase 32\Clase 32 - Loggers, gzip y análisis de performance\node_modules\mongoose\node_modules\mongodb\lib\cmap\connection.js:156:14
+      2  100.0%        LazyCompile: ~<anonymous> C:\Users\Cesar\Downloads\BackEnd Dev\Clase 32\Clase 32 - Loggers, gzip y análisis de performance\node_modules\mongoose\node_modules\mongodb\lib\cmap\connection.js:60:44
+      2  100.0%          Function: ^emit node:events:475:44
+      2  100.0%            LazyCompile: ~processIncomingData C:\Users\Cesar\Downloads\BackEnd Dev\Clase 32\Clase 32 - Loggers, gzip y análisis de performance\node_modules\mongoose\node_modules\mongodb\lib\cmap\message_stream.js:84:29
+      2    2.2%      LazyCompile: *toNamespacedPath node:path:618:19
+      1   50.0%        Function: ^stat node:internal/modules/cjs/loader:151:14
+      1  100.0%          Function: ^Module._findPath node:internal/modules/cjs/loader:494:28
+      1  100.0%            Function: ^Module._resolveFilename node:internal/modules/cjs/loader:848:35
+      1   50.0%        Function: ^realpathSync node:fs:2425:22
+      1  100.0%          Function: ^toRealPath node:internal/modules/cjs/loader:393:20
+      1  100.0%            Function: ^tryFile node:internal/modules/cjs/loader:384:17
+      2    2.2%      Function: ^readPackage node:internal/modules/cjs/loader:290:21
+      2  100.0%        Function: ^resolveExports node:internal/modules/cjs/loader:472:24
+      2  100.0%          Function: ^Module._findPath node:internal/modules/cjs/loader:494:28
+      1   50.0%            LazyCompile: ~Module._resolveFilename node:internal/modules/cjs/loader:848:35
+      1   50.0%            Function: ^Module._resolveFilename node:internal/modules/cjs/loader:848:35
+      1    1.1%      LazyCompile: ~value node:internal/console/constructor:321:20
+      1  100.0%        LazyCompile: ~log node:internal/console/constructor:359:6
+      1  100.0%          C:\Program Files\nodejs\node.exe
+      1  100.0%            LazyCompile: ~<anonymous> C:\Users\Cesar\Downloads\BackEnd Dev\Clase 32\Clase 32 - Loggers, gzip y análisis de performance\dist\server.js:1:24766
+      1    1.1%      LazyCompile: ~serverUpdateHandler C:\Users\Cesar\Downloads\BackEnd Dev\Clase 32\Clase 32 - Loggers, gzip y análisis de performance\node_modules\mongodb\lib\sdam\topology.js:321:24
+      1  100.0%        LazyCompile: ~<anonymous> C:\Users\Cesar\Downloads\BackEnd Dev\Clase 32\Clase 32 - Loggers, gzip y análisis de performance\node_modules\mongodb\lib\sdam\topology.js:481:53
+      1  100.0%          Function: ^emit node:events:475:44
+      1  100.0%            LazyCompile: ~<anonymous> C:\Users\Cesar\Downloads\BackEnd Dev\Clase 32\Clase 32 - Loggers, gzip y análisis de performance\node_modules\mongodb\lib\sdam\server.js:63:55
+      1    1.1%      LazyCompile: ~serialize C:\Users\Cesar\Downloads\BackEnd Dev\Clase 32\Clase 32 - Loggers, gzip y análisis de performance\node_modules\bson\lib\bson.js:110:19
+      1  100.0%        LazyCompile: ~toBin C:\Users\Cesar\Downloads\BackEnd Dev\Clase 32\Clase 32 - Loggers, gzip y análisis de performance\node_modules\mongodb\lib\cmap\commands.js:82:10
+      1  100.0%          LazyCompile: ~writeCommand C:\Users\Cesar\Downloads\BackEnd Dev\Clase 32\Clase 32 - Loggers, gzip y análisis de performance\node_modules\mongodb\lib\cmap\message_stream.js:40:17
+      1  100.0%            LazyCompile: ~write C:\Users\Cesar\Downloads\BackEnd Dev\Clase 32\Clase 32 - Loggers, gzip y análisis de performance\node_modules\mongodb\lib\cmap\connection.js:403:15
+      1    1.1%      LazyCompile: ~readPackage node:internal/modules/cjs/loader:290:21
+      1  100.0%        LazyCompile: ~readPackageScope node:internal/modules/cjs/loader:321:26
+      1  100.0%          LazyCompile: ~shouldUseESMLoader node:internal/modules/run_main:30:28
+      1  100.0%            LazyCompile: ~executeUserEntryPoint node:internal/modules/run_main:70:31
+      1    1.1%      LazyCompile: ~readFileSync node:fs:450:22
+      1  100.0%        LazyCompile: ~Module._extensions..js node:internal/modules/cjs/loader:1114:37
+      1  100.0%          LazyCompile: ~Module.load node:internal/modules/cjs/loader:969:33
+      1  100.0%            LazyCompile: ~Module._load node:internal/modules/cjs/loader:757:24
+      1    1.1%      LazyCompile: ~push node:internal/fixed_queue:75:7
+      1  100.0%        LazyCompile: ~push node:internal/fixed_queue:99:7
+      1  100.0%          LazyCompile: ~nextTick node:internal/process/task_queues:104:18
+      1  100.0%            LazyCompile: ~maybeReadMore C:\Users\Cesar\Downloads\BackEnd Dev\Clase 32\Clase 32 - Loggers, gzip y análisis de performance\node_modules\winston\node_modules\readable-stream\lib\_stream_readable.js:558:23
+      1    1.1%      LazyCompile: ~processTicksAndRejections node:internal/process/task_queues:68:35
+      1    1.1%      LazyCompile: ~pbkdf2Sync node:internal/crypto/pbkdf2:68:20
+      1  100.0%        LazyCompile: ~HI C:\Users\Cesar\Downloads\BackEnd Dev\Clase 32\Clase 32 - Loggers, gzip y análisis de performance\node_modules\mongodb\lib\cmap\auth\scram.js:238:12
+      1  100.0%          LazyCompile: ~continueScramConversation C:\Users\Cesar\Downloads\BackEnd Dev\Clase 32\Clase 32 - Loggers, gzip y análisis de performance\node_modules\mongodb\lib\cmap\auth\scram.js:93:35
+      1  100.0%            LazyCompile: ~<anonymous> C:\Users\Cesar\Downloads\BackEnd Dev\Clase 32\Clase 32 - Loggers, gzip y análisis de performance\node_modules\mongodb\lib\cmap\auth\scram.js:85:80
+      1    1.1%      LazyCompile: ~createDebug C:\Users\Cesar\Downloads\BackEnd Dev\Clase 32\Clase 32 - Loggers, gzip y análisis de performance\node_modules\socket.io\node_modules\debug\src\common.js:60:22
+      1  100.0%        Function: ~<anonymous> C:\Users\Cesar\Downloads\BackEnd Dev\Clase 32\Clase 32 - Loggers, gzip y análisis de performance\node_modules\socket.io\dist\client.js:1:1
+      1  100.0%          Function: ^Module._compile node:internal/modules/cjs/loader:1059:37
+      1  100.0%            Function: ^Module._extensions..js node:internal/modules/cjs/loader:1114:37
+      1    1.1%      LazyCompile: ~createDebug C:\Users\Cesar\Downloads\BackEnd Dev\Clase 32\Clase 32 - Loggers, gzip y análisis de performance\node_modules\engine.io\node_modules\debug\src\common.js:60:22
+      1  100.0%        Function: ~<anonymous> C:\Users\Cesar\Downloads\BackEnd Dev\Clase 32\Clase 32 - Loggers, gzip y análisis de performance\node_modules\engine.io\build\userver.js:1:1
+      1  100.0%          Function: ^Module._compile node:internal/modules/cjs/loader:1059:37
+      1  100.0%            Function: ^Module._extensions..js node:internal/modules/cjs/loader:1114:37
+      1    1.1%      LazyCompile: ~compileFunction node:vm:308:25
+      1  100.0%        LazyCompile: ~wrapSafe node:internal/modules/cjs/loader:1017:18
+      1  100.0%          LazyCompile: ~Module._compile node:internal/modules/cjs/loader:1059:37
+      1  100.0%            LazyCompile: ~Module._extensions..js node:internal/modules/cjs/loader:1114:37
+      1    1.1%      LazyCompile: ~compileForInternalLoader node:internal/bootstrap/loaders:299:27
+      1  100.0%        LazyCompile: ~nativeModuleRequire node:internal/bootstrap/loaders:332:29
+      1  100.0%          Function: ~<anonymous> node:internal/modules/esm/loader:1:1
+      1  100.0%            LazyCompile: ~compileForInternalLoader node:internal/bootstrap/loaders:299:27
+      1    1.1%      LazyCompile: ~TLSSocket._wrapHandle node:_tls_wrap:596:43
+      1  100.0%        LazyCompile: ~TLSSocket node:_tls_wrap:464:19
+      1  100.0%          LazyCompile: ~connect node:_tls_wrap:1599:35
+      1  100.0%            LazyCompile: ~makeConnection C:\Users\Cesar\Downloads\BackEnd Dev\Clase 32\Clase 32 - Loggers, gzip y análisis de performance\node_modules\mongodb\lib\cmap\connect.js:248:24
+      1    1.1%      LazyCompile: ~Resolver node:internal/dns/utils:53:14
+      1  100.0%        Function: ~<anonymous> node:internal/dns/utils:1:1
+      1  100.0%          Function: ^compileForInternalLoader node:internal/bootstrap/loaders:299:27
+      1  100.0%            Function: ^nativeModuleRequire node:internal/bootstrap/loaders:332:29
+      1    1.1%      LazyCompile: ~Protocol._parsePacket C:\Users\Cesar\Downloads\BackEnd Dev\Clase 32\Clase 32 - Loggers, gzip y análisis de performance\node_modules\mysql\lib\protocol\Protocol.js:242:43
+      1  100.0%        LazyCompile: ~_parsePacket C:\Users\Cesar\Downloads\BackEnd Dev\Clase 32\Clase 32 - Loggers, gzip y análisis de performance\node_modules\mysql\lib\protocol\Parser.js:419:54
+      1  100.0%          LazyCompile: ~write C:\Users\Cesar\Downloads\BackEnd Dev\Clase 32\Clase 32 - Loggers, gzip y análisis de performance\node_modules\mysql\lib\protocol\Parser.js:29:40
+      1  100.0%            LazyCompile: ~Protocol.write C:\Users\Cesar\Downloads\BackEnd Dev\Clase 32\Clase 32 - Loggers, gzip y análisis de performance\node_modules\mysql\lib\protocol\Protocol.js:37:36
+      1    1.1%      LazyCompile: ~MongoClient C:\Users\Cesar\Downloads\BackEnd Dev\Clase 32\Clase 32 - Loggers, gzip y análisis de performance\node_modules\mongodb\lib\mongo_client.js:63:16
+      1  100.0%        LazyCompile: ~connect C:\Users\Cesar\Downloads\BackEnd Dev\Clase 32\Clase 32 - Loggers, gzip y análisis de performance\node_modules\mongodb\lib\mongo_client.js:227:19
+      1  100.0%          LazyCompile: ~MongoStore C:\Users\Cesar\Downloads\BackEnd Dev\Clase 32\Clase 32 - Loggers, gzip y análisis de performance\node_modules\connect-mongo\build\main\lib\MongoStore.js:75:16
+      1  100.0%            LazyCompile: ~create C:\Users\Cesar\Downloads\BackEnd Dev\Clase 32\Clase 32 - Loggers, gzip y análisis de performance\node_modules\connect-mongo\build\main\lib\MongoStore.js:135:18
+      1    1.1%      LazyCompile: ~Db C:\Users\Cesar\Downloads\BackEnd Dev\Clase 32\Clase 32 - Loggers, gzip y análisis de performance\node_modules\mongodb\lib\db.js:81:16
+      1  100.0%        LazyCompile: ~db C:\Users\Cesar\Downloads\BackEnd Dev\Clase 32\Clase 32 - Loggers, gzip y análisis de performance\node_modules\mongodb\lib\mongo_client.js:214:7
+      1  100.0%          LazyCompile: ~<anonymous> C:\Users\Cesar\Downloads\BackEnd Dev\Clase 32\Clase 32 - Loggers, gzip y análisis de performance\node_modules\connect-mongo\build\main\lib\MongoStore.js:124:42
+      1  100.0%            C:\Program Files\nodejs\node.exe
+      1    1.1%      LazyCompile: ~Connection C:\Users\Cesar\Downloads\BackEnd Dev\Clase 32\Clase 32 - Loggers, gzip y análisis de performance\node_modules\mongoose\node_modules\mongodb\lib\cmap\connection.js:37:16
+      1  100.0%        LazyCompile: ~<anonymous> C:\Users\Cesar\Downloads\BackEnd Dev\Clase 32\Clase 32 - Loggers, gzip y análisis de performance\node_modules\mongoose\node_modules\mongodb\lib\cmap\connect.js:31:63
+      1  100.0%          LazyCompile: ~callback C:\Users\Cesar\Downloads\BackEnd Dev\Clase 32\Clase 32 - Loggers, gzip y análisis de performance\node_modules\mongoose\node_modules\mongodb\lib\cmap\connect.js:261:31
+      1  100.0%            LazyCompile: ~connectHandler C:\Users\Cesar\Downloads\BackEnd Dev\Clase 32\Clase 32 - Loggers, gzip y análisis de performance\node_modules\mongoose\node_modules\mongodb\lib\cmap\connect.js:305:28
+      1    1.1%      LazyCompile: ~<anonymous> C:\Users\Cesar\Downloads\BackEnd Dev\Clase 32\Clase 32 - Loggers, gzip y análisis de performance\node_modules\mongodb\lib\connection_string.js:72:39
+      1  100.0%        LazyCompile: ~onresolve node:dns:207:19
+      1    1.1%      LazyCompile: ~<anonymous> C:\Users\Cesar\Downloads\BackEnd Dev\Clase 32\Clase 32 - Loggers, gzip y análisis de performance\dist\server.js:1:5068
+      1  100.0%        LazyCompile: ~<anonymous> C:\Users\Cesar\Downloads\BackEnd Dev\Clase 32\Clase 32 - Loggers, gzip y análisis de performance\dist\server.js:1:3481
+      1  100.0%          C:\Program Files\nodejs\node.exe
+      1  100.0%            LazyCompile: ~o C:\Users\Cesar\Downloads\BackEnd Dev\Clase 32\Clase 32 - Loggers, gzip y análisis de performance\dist\server.js:1:3435
+      1    1.1%      LazyCompile: *resolve node:path:158:10
+      1  100.0%        Function: ^readPackage node:internal/modules/cjs/loader:290:21
+      1  100.0%          Function: ^readPackageScope node:internal/modules/cjs/loader:321:26
+      1  100.0%            Function: ^trySelf node:internal/modules/cjs/loader:441:17
+      1    1.1%      Function: ~<anonymous> node:internal/fs/promises:1:1
+      1  100.0%        LazyCompile: ~compileForInternalLoader node:internal/bootstrap/loaders:299:27
+      1  100.0%          LazyCompile: ~nativeModuleRequire node:internal/bootstrap/loaders:332:29
+      1  100.0%            Function: ~<anonymous> node:internal/modules/esm/get_source:1:1
+      1    1.1%      Function: ~<anonymous> C:\Users\Cesar\Downloads\BackEnd Dev\Clase 32\Clase 32 - Loggers, gzip y análisis de performance\node_modules\supports-color\index.js:1:1
+      1  100.0%        Function: ^Module._compile node:internal/modules/cjs/loader:1059:37
+      1  100.0%          Function: ^Module._extensions..js node:internal/modules/cjs/loader:1114:37
+      1  100.0%            Function: ^Module.load node:internal/modules/cjs/loader:969:33
+      1    1.1%      Function: ~<anonymous> C:\Users\Cesar\Downloads\BackEnd Dev\Clase 32\Clase 32 - Loggers, gzip y análisis de performance\node_modules\mysql\lib\protocol\constants\errors.js:1:1
+      1  100.0%        Function: ^Module._compile node:internal/modules/cjs/loader:1059:37
+      1  100.0%          Function: ^Module._extensions..js node:internal/modules/cjs/loader:1114:37
+      1  100.0%            Function: ^Module.load node:internal/modules/cjs/loader:969:33
+      1    1.1%      Function: ~<anonymous> C:\Users\Cesar\Downloads\BackEnd Dev\Clase 32\Clase 32 - Loggers, gzip y análisis de performance\node_modules\@colors\colors\lib\colors.js:1:1
+      1  100.0%        Function: ^Module._compile node:internal/modules/cjs/loader:1059:37
+      1  100.0%          Function: ^Module._extensions..js node:internal/modules/cjs/loader:1114:37
+      1  100.0%            Function: ^Module.load node:internal/modules/cjs/loader:969:33
+      1    1.1%      Function: ^trySelf node:internal/modules/cjs/loader:441:17
+      1  100.0%        Function: ^Module._resolveFilename node:internal/modules/cjs/loader:848:35
+      1  100.0%          Function: ^Module._load node:internal/modules/cjs/loader:757:24
+      1  100.0%            Function: ^Module.require node:internal/modules/cjs/loader:997:36
+      1    1.1%      Function: ^readSync node:fs:684:18
+      1  100.0%        Function: ^tryReadSync node:fs:429:21
+      1  100.0%          Function: ^readFileSync node:fs:450:22
+      1  100.0%            Function: ^Module._extensions..js node:internal/modules/cjs/loader:1114:37
+      1    1.1%      Function: ^read node:internal/modules/package_json_reader:16:14
+      1  100.0%        Function: ^readPackage node:internal/modules/cjs/loader:290:21
+      1  100.0%          Function: ^resolveExports node:internal/modules/cjs/loader:472:24
+      1  100.0%            Function: ^Module._findPath node:internal/modules/cjs/loader:494:28
+      1    1.1%      Function: ^processTicksAndRejections node:internal/process/task_queues:68:35
+      1    1.1%      Function: ^maybeCacheSourceMap node:internal/source_map/source_map_cache:74:29
+      1  100.0%        Function: ^Module._compile node:internal/modules/cjs/loader:1059:37
+      1  100.0%          Function: ^Module._extensions..js node:internal/modules/cjs/loader:1114:37
+      1  100.0%            Function: ^Module.load node:internal/modules/cjs/loader:969:33
+      1    1.1%      Function: ^findLongestRegisteredExtension node:internal/modules/cjs/loader:413:40
+      1  100.0%        Function: ^Module.load node:internal/modules/cjs/loader:969:33
+      1  100.0%          Function: ^Module._load node:internal/modules/cjs/loader:757:24
+      1  100.0%            Function: ^Module.require node:internal/modules/cjs/loader:997:36
+      1    1.1%      Function: ^canBeRequiredByUsers node:internal/bootstrap/loaders:240:30
+      1  100.0%        Function: ^Module._resolveFilename node:internal/modules/cjs/loader:848:35
+      1  100.0%          Function: ^Module._load node:internal/modules/cjs/loader:757:24
+      1  100.0%            Function: ^Module.require node:internal/modules/cjs/loader:997:36
+      1    1.1%      Function: ^Module._load node:internal/modules/cjs/loader:757:24
+      1  100.0%        Function: ^Module.require node:internal/modules/cjs/loader:997:36
+      1  100.0%          Function: ^require node:internal/modules/cjs/helpers:101:31
+      1  100.0%            Function: ~<anonymous> C:\Users\Cesar\Downloads\BackEnd Dev\Clase 32\Clase 32 - Loggers, gzip y análisis de performance\node_modules\mongodb\lib\db.js:1:1
+      1    1.1%      Function: ^Module._findPath node:internal/modules/cjs/loader:494:28
+      1  100.0%        Function: ^Module._resolveFilename node:internal/modules/cjs/loader:848:35
+      1  100.0%          Function: ^Module._load node:internal/modules/cjs/loader:757:24
+      1  100.0%            Function: ^Module.require node:internal/modules/cjs/loader:997:36
+      1    1.1%      C:\Program Files\nodejs\node.exe
+      1  100.0%        LazyCompile: ~format C:\Users\Cesar\Downloads\BackEnd Dev\Clase 32\Clase 32 - Loggers, gzip y análisis de performance\node_modules\fecha\lib\fecha.umd.js:246:25
+      1  100.0%          LazyCompile: ~<anonymous> C:\Users\Cesar\Downloads\BackEnd Dev\Clase 32\Clase 32 - Loggers, gzip y análisis de performance\node_modules\logform\timestamp.js:14:25
+      1  100.0%            LazyCompile: ~<anonymous> C:\Users\Cesar\Downloads\BackEnd Dev\Clase 32\Clase 32 - Loggers, gzip y análisis de performance\node_modules\logform\combine.js:17:10
+      2    1.6%    Function: ^readFileSync node:fs:450:22
+      2  100.0%      Function: ^Module._extensions..js node:internal/modules/cjs/loader:1114:37
+      2  100.0%        Function: ^Module.load node:internal/modules/cjs/loader:969:33
+      2  100.0%          Function: ^Module._load node:internal/modules/cjs/loader:757:24
+      2  100.0%            Function: ^Module.require node:internal/modules/cjs/loader:997:36
+
