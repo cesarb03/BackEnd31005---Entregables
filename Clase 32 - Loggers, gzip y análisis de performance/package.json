@@ -3,10 +3,10 @@
   "version": "1.0.0",
   "main": "./dist/server.js",
   "scripts": {
-    "build": "webpack",
+   "build": "webpack",
     "start": "node .",
-    "test": "node benchmark.js",
-    "0x": "0x ./dist/server.js"
+    "test": "node ./src/benchmark.js",
+    "0x": "0x dist/server.js"
   },
   "keywords": [],
   "author": "",
