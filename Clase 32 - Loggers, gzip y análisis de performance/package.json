@@ -6,7 +6,7 @@
    "build": "webpack",
     "start": "node .",
     "test": "node ./src/benchmark.js",
-    "0x": "0x dist/server.js"
+    "0x": "0x ./dist/server.js"
   },
   "keywords": [],
   "author": "",
