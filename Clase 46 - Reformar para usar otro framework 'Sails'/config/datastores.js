@@ -46,6 +46,8 @@ module.exports.datastores = {
      *                                                                          *
      ***************************************************************************/
     adapter: "sails-mongo",
-    url: "mongodb://prueba:prueba123@cluster0-shard-00-00.d9grp.mongodb.net:27017,cluster0-shard-00-01.d9grp.mongodb.net:27017,cluster0-shard-00-02.d9grp.mongodb.net:27017/?ssl=true&replicaSet=atlas-ondxdw-shard-0&authSource=admin&retryWrites=true&w=majority",
+    port: "27017",
+    host: "127.0.0.1",
+    database: "sails",
   },
 };

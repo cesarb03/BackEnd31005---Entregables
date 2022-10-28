@@ -29,7 +29,7 @@
     "type": "git",
     "url": "git://github.com/anonymous node/sails user/clase-46-reformar-para-usar-otro-framework-sails.git"
   },
-  "author": "anonymous node/sails user",
+  "author": "cesarbergamasco",
   "license": "",
   "engines": {
     "node": "^16.15"

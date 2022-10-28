@@ -8,37 +8,24 @@
 module.exports = {
   attributes: {
     name: {
-      type: String,
+      type: "string",
       required: true,
-      minlength: 3,
-      maxlength: 70,
     },
     price: {
-      type: Number,
+      type: "number",
       required: true,
-      min: 0,
     },
     description: {
-      type: String,
+      type: "string",
       required: false,
-      minlength: 3,
-      maxlength: 200,
     },
     photoURL: {
-      type: String,
+      type: "string",
       required: true,
-      minlength: 8,
-      maxlength: 200,
     },
     stock: {
-      type: Number,
+      type: "number",
       required: false,
-      min: 0,
-    },
-    timestamp: {
-      type: Number,
-      required: false,
-      default: Date.now,
     },
   },
 };
